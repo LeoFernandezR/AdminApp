@@ -1,0 +1,529 @@
+
+<!DOCTYPE html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="apple-touch-icon" href="icon.png" />
+    <!-- Place favicon.ico in the root directory -->
+    <script src="https://kit.fontawesome.com/70815a93a7.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|PT+Sans&display=swap" rel="stylesheet" />
+
+        <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+
+    <meta name="theme-color" content="#fafafa" />
+</head>
+
+<body class="registro">
+    <!--[if IE]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <header class="site-header">
+        <div class="hero">
+            <div class="contenido-header">
+                <nav class="redes-sociales">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </nav>
+                <!--Redes sociales-->
+                <div class="informacion-evento">
+                    <p class="fecha"><i class="fas fa-calendar-alt"></i> 10-20-Dic</p>
+                    <p class="ciudad">
+                        <i class="fas fa-map-marker-alt"></i> Buenos Aires, AR
+                    </p>
+                </div>
+                <!--informacion evento-->
+                <div class="titulo-evento">
+                    <h1 class="nombre-sitio">BsAsWebCamp</h1>
+                    <p class="slogan">
+                        La mejor conferencia de <span>diseño web</span>
+                    </p>
+                </div>
+            </div>
+            <!--Hero-->
+        </div>
+    </header>
+
+    <div class="barra">
+        <div class="menu-navegacion contenedor">
+            <div class="logo">
+                <a href="index.php"><img src="img/logo.png" alt="logo" /></a>
+            </div>
+            <div class="menu-movil">
+                <span> </span>
+                <span> </span>
+                <span> </span>
+            </div>
+            <nav class="navegacion-principal">
+                <a href="conferencia.php">Conferencia</a>
+                <a href="calendario.php">Calendario</a>
+                <a href="invitados.php">Invitados</a>
+                <a href="registro.php">Reservaciones</a>
+            </nav>
+        </div>
+    </div>
+    <!--Barra--><section class="seccion contenedor">
+  <h2>Registro de Usuarios</h2>
+  <form id="registro" class="registro" action="pagar.php" method="POST">
+    <div id="datos-usuario" class="registro caja contenedor-flex">
+      <div class="campo">
+        <label for="nombre">Nombre: </label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu Nombre">
+      </div>
+      <div class="campo">
+        <label for="apellido">Apellido: </label>
+        <input type="text" id="apellido" name="apellido" placeholder="Tu Apellido">
+      </div>
+      <div class="campo">
+        <label for="email">Email: </label>
+        <input type="email" id="email" name="email" placeholder="Tu Email">
+      </div>
+      <br />
+      <div id="error"></div>
+    </div>
+    <!--Datos usuarios-->
+    <div class="paquetes" id="paquetes">
+      <h3>Elige el número de boletos</h3>
+
+
+      <ul class="lista-precios">
+        <li>
+          <div class="tabla-precio">
+            <h3>Pase por día (viernes)</h3>
+            <p class="numero">$30</p>
+            <ul>
+              <li>Bocadillos Gratis</li>
+              <li>Todas las Conferencias</li>
+              <li>Todos los talleres</li>
+            </ul>
+            <div class="orden">
+              <label for="pase_dia">Boletos deseados:</label>
+              <input type="number" min="0" id="pase_dia" size="3" name="boletos[un_dia][cantidad]" placeholder="0">
+              <input type="hidden" value="30" name="boletos[un_dia][precio]">
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="tabla-precio">
+            <h3>Todos los días</h3>
+            <p class="numero">$50</p>
+            <ul>
+              <li>Bocadillos Gratis</li>
+              <li>Todas las Conferencias</li>
+              <li>Todos los talleres</li>
+            </ul>
+            <div class="orden">
+              <label for="pase_completo">Boletos deseados:</label>
+              <input type="number" min="0" id="pase_completo" size="3" name="boletos[completo][cantidad]" placeholder="0">
+              <input type="hidden" value="50" name="boletos[completo][precio]">
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="tabla-precio">
+            <h3>Pase por 2 días (viernes y sabado)</h3>
+            <p class="numero">$45</p>
+            <ul>
+              <li>Bocadillos Gratis</li>
+              <li>Todas las Conferencias</li>
+              <li>Todos los talleres</li>
+            </ul>
+            <div class="orden">
+              <label for="pase_dosdias">Boletos deseados:</label>
+              <input type="number" min="0" id="pase_dosdias" size="3" name="boletos[2dias][cantidad]" placeholder="0">
+              <input type="hidden" value="45" name="boletos[2dias][precio]">
+            </div>
+            <!--.orden-->
+          </div>
+          <!--.tabla-precio-->
+        </li>
+      </ul>
+      <!--.precios-->
+    </div>
+    <!--Paquetes-->
+
+    <div id="eventos" class="eventos">
+      <h3>Elige tus talleres</h3>
+      <div class="caja">
+                      
+     
+        <div id="viernes" class="contenido-dia">
+          <h4>viernes</h4>
+          <div class="evento-flex">
+                        <div>
+              <p>Seminario:</p>
+                            <label>
+                <input type="checkbox" name="registro[]" id="9" value="9"><time>10:00 AM</time>
+                Diseño UI y UX para móviles - 
+                <span class="autor">Susan Sanchez</span>
+              </label> 
+                            </div>
+                        <div>
+              <p>Conferencia:</p>
+                            <label>
+                <input type="checkbox" name="registro[]" id="6" value="6"><time>10:00 AM</time>
+                Como ser freelancer - 
+                <span class="autor">Susan Sanchez</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="7" value="7"><time>05:00 PM</time>
+                Tecnologías del futuro - 
+                <span class="autor">Rafael  Bautista</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="8" value="8"><time>07:00 PM</time>
+                Seguridad en la Web - 
+                <span class="autor">Shari Herrera</span>
+              </label> 
+                            </div>
+                        <div>
+              <p>Talleres:</p>
+                            <label>
+                <input type="checkbox" name="registro[]" id="1" value="1"><time>10:00 AM</time>
+                Responsive Web Design - 
+                <span class="autor">Rafael  Bautista</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="2" value="2"><time>12:00 PM</time>
+                Flexbox - 
+                <span class="autor">Shari Herrera</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="3" value="3"><time>02:00 PM</time>
+                HTML5 y CSS3 - 
+                <span class="autor">Gregorio Sanchez</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="4" value="4"><time>05:00 PM</time>
+                Drupal - 
+                <span class="autor">Susana Rivera</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="5" value="5"><time>07:00 PM</time>
+                WordPress - 
+                <span class="autor">Harold Garcia</span>
+              </label> 
+                            </div>
+                      </div>
+        </div>
+                  
+     
+        <div id="sabado" class="contenido-dia">
+          <h4>sábado</h4>
+          <div class="evento-flex">
+                        <div>
+              <p>Seminario:</p>
+                            <label>
+                <input type="checkbox" name="registro[]" id="19" value="19"><time>10:00 AM</time>
+                Aprende a Programar en una mañana - 
+                <span class="autor">Gregorio Sanchez</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="20" value="20"><time>05:00 PM</time>
+                Diseño UI y UX para móviles - 
+                <span class="autor">Harold Garcia</span>
+              </label> 
+                            </div>
+                        <div>
+              <p>Conferencia:</p>
+                            <label>
+                <input type="checkbox" name="registro[]" id="16" value="16"><time>10:00 AM</time>
+                Como crear una tienda online que venda millones en pocos día - 
+                <span class="autor">Susan Sanchez</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="17" value="17"><time>05:00 PM</time>
+                Los mejores lugares para encontrar trabajo - 
+                <span class="autor">Rafael  Bautista</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="18" value="18"><time>07:00 PM</time>
+                Pasos para crear un negocio rentable  - 
+                <span class="autor">Shari Herrera</span>
+              </label> 
+                            </div>
+                        <div>
+              <p>Talleres:</p>
+                            <label>
+                <input type="checkbox" name="registro[]" id="10" value="10"><time>10:00 AM</time>
+                AngularJS - 
+                <span class="autor">Rafael  Bautista</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="11" value="11"><time>12:00 PM</time>
+                PHP y MySQL - 
+                <span class="autor">Shari Herrera</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="12" value="12"><time>02:00 PM</time>
+                JavaScript Avanzado - 
+                <span class="autor">Gregorio Sanchez</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="13" value="13"><time>05:00 PM</time>
+                SEO en Google - 
+                <span class="autor">Susana Rivera</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="14" value="14"><time>07:00 PM</time>
+                De Photoshop a HTML5 y CSS3 - 
+                <span class="autor">Harold Garcia</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="15" value="15"><time>09:00 PM</time>
+                PHP Intermedio y Avanzado - 
+                <span class="autor">Susan Sanchez</span>
+              </label> 
+                            </div>
+                      </div>
+        </div>
+                  
+     
+        <div id="domingo" class="contenido-dia">
+          <h4>domingo</h4>
+          <div class="evento-flex">
+                        <div>
+              <p>Seminario:</p>
+                            <label>
+                <input type="checkbox" name="registro[]" id="29" value="29"><time>10:00 AM</time>
+                Creando una App en Android en una mañana - 
+                <span class="autor">Susana Rivera</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="30" value="30"><time>05:00 PM</time>
+                Creando una App en iOS en una tarde - 
+                <span class="autor">Rafael  Bautista</span>
+              </label> 
+                            </div>
+                        <div>
+              <p>Conferencia:</p>
+                            <label>
+                <input type="checkbox" name="registro[]" id="26" value="26"><time>10:00 AM</time>
+                Como hacer Marketing en línea - 
+                <span class="autor">Susan Sanchez</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="27" value="27"><time>05:00 PM</time>
+                ¿Con que lenguaje debo empezar? - 
+                <span class="autor">Shari Herrera</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="28" value="28"><time>07:00 PM</time>
+                Frameworks y librerias Open Source - 
+                <span class="autor">Gregorio Sanchez</span>
+              </label> 
+                            </div>
+                        <div>
+              <p>Talleres:</p>
+                            <label>
+                <input type="checkbox" name="registro[]" id="21" value="21"><time>10:00 AM</time>
+                Laravel - 
+                <span class="autor">Rafael  Bautista</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="22" value="22"><time>12:00 PM</time>
+                Crea tu propia API - 
+                <span class="autor">Shari Herrera</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="23" value="23"><time>02:00 PM</time>
+                JavaScript y jQuery - 
+                <span class="autor">Gregorio Sanchez</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="24" value="24"><time>05:00 PM</time>
+                Creando Plantillas para WordPress - 
+                <span class="autor">Susana Rivera</span>
+              </label> 
+                              <label>
+                <input type="checkbox" name="registro[]" id="25" value="25"><time>07:00 PM</time>
+                Tiendas Virtuales en Magento - 
+                <span class="autor">Harold Garcia</span>
+              </label> 
+                            </div>
+                      </div>
+        </div>
+        <!--#viernes-->
+      </div>
+      <!--.caja-->
+    </div>
+    <!--#eventos-->
+
+    <div class="resumen" id="resumen">
+      <h3>Pago y Extras</h3>
+      <div class="caja contenedor-grid">
+        <div class="extras">
+          <div class="orden">
+            <label for="camisa_evento">Camisa del evento $10 <small>(promoción 7% de dto.)</small></label>
+            <input type="number" min="0" id="camisa_evento" size="3" name="pedido_extra[camisas][cantidad]" placeholder="0">
+            <input type="hidden" name="pedido_extra[camisas][precio]"
+            value="10">
+          </div>
+          <!--Orden-->
+          <div class="orden">
+            <label for="etiquetas">Paquetes de 10 etiquetas $2 <small>(HTML5, CSS3, JavaScript,
+                Chrome)</small></label>
+            <input type="number" min="0" id="etiquetas" size="3" name="pedido_extra[etiquetas][cantidad]" placeholder="0">
+            <input type="hidden" name="pedido_extra[etiquetas][precio]"
+            value="2">
+          </div>
+          <!--Orden-->
+          <div class="orden">
+            <label for="regalo">Seleccione un regalo</label>
+            <select id="regalo" name="regalo" required>
+              <option value="">-- Seleccione un regalo --</option>
+              <option value="2">Etiquetas</option>
+              <option value="1">Pulsera</option>
+              <option value="3">Plumas</option>
+
+            </select>
+          </div>
+          <!--Orden-->
+          <div class="boton-calcular">
+            <input type="button" id="calcular" class="button" value="calcular">
+          </div>
+        </div>
+        <!--Extras-->
+        <div class="total">
+          <p>Resumen:</p>
+          <div id="lista-productos">
+
+          </div>
+          <p>Total:</p>
+          <div id="suma-total">
+
+          </div>
+          <div class="pagar">
+            <input type="hidden" name="total_pedido" id="total_pedido">
+            <input type="Submit" id="btnRegistro" name="submit" class="button" value="Pagar">
+          </div>
+        </div>
+        <!--Total-->
+      </div>
+      <!--Caja-->
+    </div>
+    <!--#resumen-->
+  </form>
+</section>
+<footer class="site-footer">
+    <div class="contenedor footer-content">
+        <div class="footer-informacion">
+            <h3>Sobre <span>BsAsWebcamp</span></h3>
+            <p>
+                Dolorum ipsum voluptate inventore eveniet quisquam rerum nihil quo
+                maxime odio aliquid hic, libero ipsam omnis error id similique!.
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis,
+                    atque voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente facilis harum autem fugit, aspernatur quae ducimus et corporis suscipit dolor? Rerum saepe dolore a deserunt assumenda, et nam neque provident.</p>
+            </p>
+        </div>
+        <div class="ultimos-tweets">
+            <h3>Ultimos <span>Tweets</span></h3>
+            <ul>
+                <li>
+                    Officiis et, accusantium ducimus laborum dolorum tempore excepturi
+                    eligendi hic beatae accusamus nostrum illum quas laboriosam odio
+                    officia porro in cum eos?
+                </li>
+                <li>
+                    Officiis et, accusantium ducimus laborum dolorum tempore excepturi
+                    eligendi hic beatae accusamus nostrum illum quas laboriosam odio
+                    officia porro in cum eos?
+                </li>
+                <li>
+                    Officiis et, accusantium ducimus laborum dolorum tempore excepturi
+                    eligendi hic beatae accusamus nostrum illum quas laboriosam odio
+                    officia porro in cum eos?
+                </li>
+            </ul>
+        </div>
+        <div class="menu">
+            <h3>Redes <span>Sociales</span></h3>
+            <nav class="redes-sociales">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </nav>
+        </div>
+    </div>
+    <p class="copyright">
+        Todos los derechos Reservados BSASWEBCAMP 2020 &copy;
+    </p>
+
+    <!-- Begin Mailchimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+	/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div style="display:none;">
+    <div id="mc_embed_signup">
+    <form action="https://gmail.us19.list-manage.com/subscribe/post?u=54a35b3fbd79bb2618d8f108c&amp;id=b3207b914e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+        <div id="mc_embed_signup_scroll">
+        <h2>Suscribete al Newsletter y no te pierdas nada de este evento</h2>
+    <div class="indicates-required"><span class="asterisk">*</span> es obligatorio</div>
+    <div class="mc-field-group">
+        <label for="mce-EMAIL">Correo Electrónico  <span class="asterisk">*</span>
+    </label>
+        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+    </div>
+        <div id="mce-responses" class="clear">
+            <div class="response" id="mce-error-response" style="display:none"></div>
+            <div class="response" id="mce-success-response" style="display:none"></div>
+        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_54a35b3fbd79bb2618d8f108c_b3207b914e" tabindex="-1" value=""></div>
+        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+        </div>
+    </form>
+    </div>
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+    <!--End mc_embed_signup-->
+</div>
+</footer>
+
+<!-- Acá termina el html que estas haciendo -->
+<script src="js/vendor/modernizr-3.7.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script>
+    window.jQuery ||
+        document.write(
+            '<script src="js/vendor/jquery-3.4.1.min.js"><\/script>'
+        );
+</script>
+<script src="js/plugins.js"></script>
+<script src="js/jquery.countdown.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us19.list-manage.com","uuid":"54a35b3fbd79bb2618d8f108c","lid":"b3207b914e","uniqueMethods":true}) })</script>
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+<script src="js/cotizador.js"></script>
+<script src="js/main.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+<script>
+    window.ga = function() {
+        ga.q.push(arguments);
+    };
+    ga.q = [];
+    ga.l = +new Date();
+    ga("create", "UA-XXXXX-Y", "auto");
+    ga("set", "transport", "beacon");
+    ga("send", "pageview");
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async></script>
